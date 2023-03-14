@@ -1,0 +1,16 @@
+on: [push]
+
+jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    name: A test job
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Test action step
+        uses: ./
+        id: test
+        with:
+          id: '456'
+      - name: Get the output status
+        run: echo "The status was ${{ steps.test.outputs.status }}"

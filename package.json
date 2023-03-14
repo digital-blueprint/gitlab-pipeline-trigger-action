@@ -1,0 +1,10 @@
+{
+  "name": "gitlab-pipeline-trigger-action",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1"
+  }
+}
