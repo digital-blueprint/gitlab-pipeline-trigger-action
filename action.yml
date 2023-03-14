@@ -16,7 +16,6 @@ inputs:
   variables:
     description: 'A map of key-valued strings containing the pipeline variables. For example: { VAR1: "value1", VAR2: "value2" }.'
     required: false
-    default: {}
 outputs:
   status:
     description: 'The status of the pipeline.'
