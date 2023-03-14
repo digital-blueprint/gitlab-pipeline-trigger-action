@@ -25,3 +25,11 @@ uses: actions/gitlab-pipeline-trigger-action@v1
 with:
   id: '123'
 ```
+
+## Build action
+
+```bash
+npm run build
+```
+
+Then commit the changes to the `dist` folder.
