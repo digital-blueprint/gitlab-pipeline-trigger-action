@@ -4,10 +4,18 @@ const axios = require('axios');
 
 try {
     // `id` input defined in action metadata file
-    const id = core.getInput('id');
+    const host = encodeURIComponent(core.getInput('host'));
+    const id = encodeURIComponent(core.getInput('id'));
+    const token = core.getInput('token');
+    const ref = core.getInput('ref');
+    const variables = core.getInput('variables');
     console.log(`Hello ${id}!`);
 
-    axios.get('https://api.github.com/users/pbek')
+    axios.post(`https://${host}/api/v4/projects/${id}/trigger/pipeline`, {
+        token: token,
+        ref: ref,
+        variables: variables,
+    })
         .then(function (response) {
             // handle success
             console.log(response);

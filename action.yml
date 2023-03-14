@@ -1,6 +1,10 @@
 name: 'GitLab Pipeline Trigger'
 description: 'Triggers and waits for a GitLab pipeline to complete'
 inputs:
+  host:
+    description: 'The GitLab host to trigger the pipeline.'
+    required: false
+    default: 'gitlab.com'
   id:
     description: 'The ID or URL-encoded path of the project owned by the authenticated user.'
     required: true

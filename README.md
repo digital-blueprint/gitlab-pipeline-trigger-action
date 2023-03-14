@@ -4,6 +4,10 @@ This GitHub action triggers and waits for a GitLab pipeline to complete.
 
 ## Inputs
 
+### `host`
+
+The GitLab host to trigger the pipeline. Default `gitlab.com`.
+
 ### `id`
 
 **Required** The ID or URL-encoded path of the project owned by the authenticated user.
