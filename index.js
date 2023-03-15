@@ -16,19 +16,26 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
  * - manual: The pipeline is waiting for a user to trigger it manually.
  */
 const pollPipeline = async (host, id, token, pipelineId) => {
-    const url = `https://${host}/api/v4/projects/${id}/pipelines/${pipelineId}`;
     console.log(`Polling pipeline ${pipelineId} on ${host}!`);
-    // console.log("url", url);
+
+    const url = `https://${host}/api/v4/projects/${id}/pipelines/${pipelineId}`;
     let status = 'pending';
     const breakStatusList = ['failed', 'success', 'canceled', 'skipped'];
 
     while (true) {
-        await wait(5000);
-        const response = await axios.get(url, {
-            headers: {
-                'PRIVATE-TOKEN': token,
-            },
-        });
+        // wait 15 seconds
+        await wait(15000);
+
+        try {
+            const response = await axios.get(url, {
+                headers: {
+                    'PRIVATE-TOKEN': token,
+                },
+            });
+        } catch (error) {
+            core.setFailed(error.message);
+            break;
+        }
 
         status = response.data.status;
         core.setOutput("status", status);
@@ -56,10 +63,7 @@ try {
     const variables = JSON.parse(core.getInput('variables'));
 
     console.log(`Triggering pipeline ${projectId} with ref ${ref} on ${host}!`);
-    // console.log("variables", variables);
-
     const url = `https://${host}/api/v4/projects/${projectId}/trigger/pipeline`;
-    // console.log("url", url);
 
     // https://docs.gitlab.com/ee/api/pipeline_triggers.html#trigger-a-pipeline-with-a-token
     axios.post(url, {
@@ -68,22 +72,18 @@ try {
         variables: variables,
     })
         .then(function (response) {
-            // handle success
-            // console.log(response);
             const data = response.data;
 
             core.setOutput("id", data.id);
             core.setOutput("status", data.status);
 
+            // poll pipeline status
             pollPipeline(host, projectId, accessToken, data.id);
         })
         .catch(function (error) {
             // handle error
             console.log(error);
             core.setFailed(error);
-        })
-        .finally(function () {
-            // always executed
         });
 } catch (error) {
     core.setFailed(error.message);
