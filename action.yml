@@ -1,5 +1,9 @@
 name: 'GitLab Pipeline Trigger'
 description: 'Triggers and waits for a GitLab pipeline to complete'
+author: 'Patrizio Bekerle <patrizio@bekerle.com>'
+branding:
+  icon: 'git-commit'
+  color: 'orange'
 inputs:
   host:
     description: 'The GitLab host to trigger the pipeline.'
