@@ -8,7 +8,10 @@ try {
     const id = encodeURIComponent(core.getInput('id'));
     const token = core.getInput('token');
     const ref = core.getInput('ref');
-    const variables = core.getInput('variables');
+    const variables = JSON.parse(core.getInput('variables'));
+
+    // TODO: Get all variables in one string?
+    // https://docs.gitlab.com/ee/api/pipeline_triggers.html#trigger-a-pipeline-with-a-token
     console.log(`Triggering pipeline ${id} with ref ${ref} on ${host}!`);
 
     axios.post(`https://${host}/api/v4/projects/${id}/trigger/pipeline`, {

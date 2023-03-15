@@ -15,9 +15,6 @@ jobs:
           token: ${{ secrets.DEPLOY_TRIGGER_TOKEN }}
           id: '21238'
           ref: 'main'
-          variables:
-            UPSTREAM_PROJECT_PATH: 'dbp/dispatch/dispatch'
-            UPSTREAM_COMMIT_BRANCH: ${{ github.ref_name }}
-            UPSTREAM_COMMIT_SHA: ${{ github.ref_name }}
+          variables: '{"UPSTREAM_PROJECT_PATH":"dbp/dispatch/dispatch","UPSTREAM_COMMIT_BRANCH":"${{ github.ref_name }}","UPSTREAM_COMMIT_SHA":"${{ github.ref_name }}"}'
       - name: Get the output status
         run: echo "The status was ${{ steps.test.outputs.status }}"
