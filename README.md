@@ -1,6 +1,9 @@
 # GitLab Pipeline trigger action
 
-[GitHub](https://github.com/digital-blueprint/gitlab-pipeline-trigger-action)
+[GitHub](https://github.com/digital-blueprint/gitlab-pipeline-trigger-action) |
+[GitHub Marketplace](https://github.com/marketplace/actions/gitlab-pipeline-trigger)
+
+[![Test action](https://github.com/digital-blueprint/gitlab-pipeline-trigger-action/actions/workflows/main.yml/badge.svg)](https://github.com/digital-blueprint/gitlab-pipeline-trigger-action/actions/workflows/main.yml)
 
 This GitHub action triggers and waits for a GitLab pipeline to complete.
 
