@@ -13,6 +13,7 @@ try {
     // TODO: Get all variables in one string?
     // https://docs.gitlab.com/ee/api/pipeline_triggers.html#trigger-a-pipeline-with-a-token
     console.log(`Triggering pipeline ${id} with ref ${ref} on ${host}!`);
+    console.log("variables", variables);
 
     axios.post(`https://${host}/api/v4/projects/${id}/trigger/pipeline`, {
         token: token,
@@ -28,7 +29,7 @@ try {
         })
         .catch(function (error) {
             // handle error
-            // console.log(error);
+            console.log(error);
             core.setFailed(error);
         })
         .finally(function () {
