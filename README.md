@@ -5,11 +5,11 @@
 
 [![Test action](https://github.com/digital-blueprint/gitlab-pipeline-trigger-action/actions/workflows/main.yml/badge.svg)](https://github.com/digital-blueprint/gitlab-pipeline-trigger-action/actions/workflows/main.yml)
 
-This GitHub action triggers and waits for a GitLab pipeline to complete.
+This GitHub action triggers and waits for a [GitLab pipeline](https://docs.gitlab.com/ee/ci/pipelines/) to complete.
 
-You can for example use this action to trigger a deployment pipeline on a private GitLab server
-after a successful build pipeline and wait for the deployment (with possible End2End tests) to finish,
-so you would get a notification if the deployment failed.
+You can for example use this action in your GitHub workflow to trigger a deployment pipeline on a private
+GitLab server after a successful build pipeline and wait for the deployment (with possible End2End tests)
+to finish, so you would get a notification if the deployment failed.
 
 ## Inputs
 
