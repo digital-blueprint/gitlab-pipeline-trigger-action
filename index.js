@@ -7,6 +7,7 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 const pollPipeline = async (host, id, token, pipelineId) => {
     const url = `https://${host}/api/v4/projects/${id}/pipelines/${pipelineId}`;
     console.log(`Polling pipeline ${pipelineId} on ${host}!`);
+    console.log("url", url);
 
     let status = 'pending';
     while (status === 'pending') {
