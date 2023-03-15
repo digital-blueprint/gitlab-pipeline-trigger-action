@@ -1,3 +1,4 @@
+Name: Test action
 on:
   push:
   workflow_dispatch:
@@ -14,7 +15,8 @@ jobs:
         id: test
         with:
           host: 'gitlab.tugraz.at'
-          token: ${{ secrets.DEPLOY_TRIGGER_TOKEN }}
+          trigger_token: ${{ secrets.DEPLOY_TRIGGER_TOKEN }}
+          access_token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
           id: '21238'
           ref: 'main'
           variables: '{"UPSTREAM_PROJECT_PATH":"dbp/dispatch/dispatch","UPSTREAM_COMMIT_BRANCH":"${{ github.ref_name }}","UPSTREAM_COMMIT_SHA":"${{ github.ref_name }}"}'

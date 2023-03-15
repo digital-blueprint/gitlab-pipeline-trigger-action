@@ -13,8 +13,12 @@ inputs:
     description: 'The branch or tag to run the pipeline on.'
     required: true
     default: ''
-  token:
-    description: 'Deploy trigger token'
+  trigger_token:
+    description: 'Pipeline Trigger Token, see https://docs.gitlab.com/ee/ci/triggers/index.html#create-a-trigger-token'
+    required: true
+    default: ''
+  access_token:
+    description: 'Pipeline Access Token, see https://gitlab.tugraz.at/help/user/project/settings/project_access_tokens'
     required: true
     default: ''
   variables:

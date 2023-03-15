@@ -8,6 +8,16 @@ This GitHub action triggers and waits for a GitLab pipeline to complete.
 
 The GitLab host to trigger the pipeline. Default `gitlab.com`.
 
+### `trigger_token`
+
+**Required** The [GitLab pipeline trigger token](https://docs.gitlab.com/ee/ci/triggers/index.html#create-a-trigger-token)
+to trigger the pipeline.
+
+### `access_token`
+
+**Required** The [GitLab pipeline access token](https://gitlab.tugraz.at/help/user/project/settings/project_access_tokens)
+to access the pipeline via the API.
+
 ### `id`
 
 **Required** The ID or URL-encoded path of the project owned by the authenticated user.

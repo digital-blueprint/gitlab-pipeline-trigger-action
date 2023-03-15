@@ -27,7 +27,8 @@ const pollPipeline = async (host, id, token, pipelineId) => {
 try {
     const host = encodeURIComponent(core.getInput('host'));
     const projectId = encodeURIComponent(core.getInput('id'));
-    const token = core.getInput('token');
+    const triggerToken = core.getInput('trigger_token');
+    const accessToken = core.getInput('access_token');
     const ref = core.getInput('ref');
     const variables = JSON.parse(core.getInput('variables'));
 
@@ -40,7 +41,7 @@ try {
     console.log("url", url);
 
     axios.post(url, {
-        token: token,
+        token: triggerToken,
         ref: ref,
         variables: variables,
     })
@@ -52,7 +53,7 @@ try {
             core.setOutput("id", data.id);
             core.setOutput("status", data.status);
 
-            pollPipeline(host, projectId, token, data.id);
+            pollPipeline(host, projectId, accessToken, data.id);
         })
         .catch(function (error) {
             // handle error
