@@ -4,6 +4,10 @@
 
 This GitHub action triggers and waits for a GitLab pipeline to complete.
 
+You can for example use this action to trigger a deployment pipeline on a private GitLab server
+after a successful build pipeline and wait for the deployment (with possible End2End tests) to finish,
+so you would get a notification if the deployment failed.
+
 ## Inputs
 
 ### `host`
