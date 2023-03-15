@@ -12,7 +12,7 @@ so you would get a notification if the deployment failed.
 
 ### `host`
 
-The GitLab host to trigger the pipeline. Default `gitlab.com`.
+The GitLab host to trigger the pipeline on. Default `gitlab.com`.
 
 ### `id`
 
@@ -40,12 +40,13 @@ A map of key-valued strings containing the pipeline variables. For example: `{ V
 
 ### `status`
 
-The last status of the pipeline.
+The last status of the pipeline. See [GitLab project pipelines](https://docs.gitlab.com/ee/api/pipelines.html#list-project-pipelines)
+for more information about which status values there are.
 
 ## Example usage
 
 ```yaml
-uses: actions/gitlab-pipeline-trigger-action@v1
+uses: digital-blueprint/gitlab-pipeline-trigger-action@v1
 with:
   host: 'gitlab.example.com'
   trigger_token: ${{ secrets.DEPLOY_TRIGGER_TOKEN }}
