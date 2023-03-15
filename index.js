@@ -2,6 +2,27 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const axios = require('axios');
 
+const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+const pollPipeline = async (host, id, token, pipelineId) => {
+    const url = `https://${host}/api/v4/projects/${id}/pipelines/${pipelineId}`;
+    console.log(`Polling pipeline ${pipelineId} on ${host}!`);
+
+    let status = 'pending';
+    while (status === 'pending') {
+        await wait(5000);
+        const response = await axios.get(url, {
+            headers: {
+                'PRIVATE-TOKEN': token,
+            },
+        });
+        status = response.data.status;
+        console.log(`Pipeline status: ${status}`);
+    }
+
+    return status;
+}
+
 try {
     // `id` input defined in action metadata file
     const host = encodeURIComponent(core.getInput('host'));
@@ -23,9 +44,12 @@ try {
         .then(function (response) {
             // handle success
             console.log(response);
+            const data = response.data;
 
-            const time = (new Date()).toTimeString();
-            core.setOutput("status", time);
+            core.setOutput("id", data.id);
+            core.setOutput("status", data.status);
+
+            pollPipeline(host, id, token, data.id);
         })
         .catch(function (error) {
             // handle error
