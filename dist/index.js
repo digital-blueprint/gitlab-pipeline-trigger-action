@@ -17307,10 +17307,13 @@ const axios = __nccwpck_require__(8757);
 const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 /**
- * GitLab pipeline status values:
+ * GitLab pipeline status values (see https://docs.gitlab.com/ee/api/pipelines.html#list-project-pipelines):
  * - created: The pipeline has been created but has not yet been processed.
+ * - preparing: The pipeline is being prepared to run.
  * - pending: The pipeline is queued and waiting for available resources to start running.
+ * - waiting_for_resource: The pipeline is queued, but there are not enough resources available to start running.
  * - running: The pipeline is currently running.
+ * - scheduled: The pipeline is scheduled to run at a later time.
  * - failed: The pipeline has completed running, but one or more jobs have failed.
  * - success: The pipeline has completed running, and all jobs have succeeded.
  * - canceled: The pipeline has been canceled by a user or system.
@@ -17378,6 +17381,7 @@ try {
 
             core.setOutput("id", data.id);
             core.setOutput("status", data.status);
+            console.log(`Pipeline id ${data.id} triggered! See ${data.web_url} for details.`);
 
             // poll pipeline status
             pollPipeline(host, projectId, accessToken, data.id);
