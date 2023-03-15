@@ -17341,6 +17341,7 @@ const pollPipeline = async (host, id, token, pipelineId) => {
         }
 
         if (breakStatusList.includes('success')) {
+            console.log(`Status "${status}" detected, breaking loop!`);
             break;
         }
     }
