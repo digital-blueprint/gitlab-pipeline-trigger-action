@@ -17338,7 +17338,10 @@ try {
     console.log(`Triggering pipeline ${projectId} with ref ${ref} on ${host}!`);
     console.log("variables", variables);
 
-    axios.post(`https://${host}/api/v4/projects/${projectId}/trigger/pipeline`, {
+    const url = `https://${host}/api/v4/projects/${projectId}/trigger/pipeline`;
+    console.log("url", url);
+
+    axios.post(url, {
         token: token,
         ref: ref,
         variables: variables,
