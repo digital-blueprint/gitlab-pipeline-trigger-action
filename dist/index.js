@@ -17334,21 +17334,21 @@ const pollPipeline = async (host, id, token, pipelineId) => {
                     'PRIVATE-TOKEN': token,
                 },
             });
+
+            status = response.data.status;
+            core.setOutput("status", status);
+            console.log(`Pipeline status: ${status}`);
+
+            if (status === 'failed') {
+                core.setFailed(`Pipeline failed!`);
+            }
+
+            if (breakStatusList.includes(status)) {
+                console.log(`Status "${status}" detected, breaking loop!`);
+                break;
+            }
         } catch (error) {
             core.setFailed(error.message);
-            break;
-        }
-
-        status = response.data.status;
-        core.setOutput("status", status);
-        console.log(`Pipeline status: ${status}`);
-
-        if (status === 'failed') {
-            core.setFailed(`Pipeline failed!`);
-        }
-
-        if (breakStatusList.includes(status)) {
-            console.log(`Status "${status}" detected, breaking loop!`);
             break;
         }
     }
