@@ -38,7 +38,7 @@ const pollPipeline = async (host, id, token, pipelineId) => {
             core.setFailed(`Pipeline failed!`);
         }
 
-        if (breakStatusList.includes('success')) {
+        if (breakStatusList.includes(status)) {
             console.log(`Status "${status}" detected, breaking loop!`);
             break;
         }
