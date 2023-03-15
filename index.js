@@ -24,32 +24,31 @@ const pollPipeline = async (host, id, token, pipelineId) => {
 }
 
 try {
-    // `id` input defined in action metadata file
     const host = encodeURIComponent(core.getInput('host'));
-    const id = encodeURIComponent(core.getInput('id'));
+    const projectId = encodeURIComponent(core.getInput('id'));
     const token = core.getInput('token');
     const ref = core.getInput('ref');
     const variables = JSON.parse(core.getInput('variables'));
 
     // TODO: Get all variables in one string?
     // https://docs.gitlab.com/ee/api/pipeline_triggers.html#trigger-a-pipeline-with-a-token
-    console.log(`Triggering pipeline ${id} with ref ${ref} on ${host}!`);
+    console.log(`Triggering pipeline ${projectId} with ref ${ref} on ${host}!`);
     console.log("variables", variables);
 
-    axios.post(`https://${host}/api/v4/projects/${id}/trigger/pipeline`, {
+    axios.post(`https://${host}/api/v4/projects/${projectId}/trigger/pipeline`, {
         token: token,
         ref: ref,
         variables: variables,
     })
         .then(function (response) {
             // handle success
-            console.log(response);
+            // console.log(response);
             const data = response.data;
 
             core.setOutput("id", data.id);
             core.setOutput("status", data.status);
 
-            pollPipeline(host, id, token, data.id);
+            pollPipeline(host, projectId, token, data.id);
         })
         .catch(function (error) {
             // handle error
