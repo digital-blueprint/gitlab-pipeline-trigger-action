@@ -60,7 +60,9 @@ with:
   variables: '{"VAR1":"value1","VAR2":"value2"}'
 ```
 
-## Build action
+## Development
+
+### Build action
 
 You need to run this after you made changes to the action.
 
@@ -69,3 +71,12 @@ npm run build
 ```
 
 Then commit the changes to the `dist` folder.
+
+### Update version tag
+
+See [Versioning](https://github.com/actions/toolkit/blob/main/docs/action-versioning.md) for more information.
+
+```bash
+git tag -fa v1 -m "Update v1 tag"
+git push origin v1 --force
+```
