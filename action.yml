@@ -22,7 +22,7 @@ inputs:
     required: true
     default: ''
   access_token:
-    description: 'Pipeline Access Token, see https://gitlab.tugraz.at/help/user/project/settings/project_access_tokens'
+    description: 'Pipeline Access Token, see https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html'
     required: false
     default: ''
   variables:
