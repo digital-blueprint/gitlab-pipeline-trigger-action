@@ -33,8 +33,10 @@ to trigger the pipeline.
 
 ### `access_token`
 
-**Required** The [GitLab pipeline access token](https://gitlab.tugraz.at/help/user/project/settings/project_access_tokens)
+The [GitLab pipeline access token](https://gitlab.tugraz.at/help/user/project/settings/project_access_tokens)
 to access the pipeline via the API. You need the `read_api` and `read_repository` scopes with `Guest` role for this token.
+
+For public projects you don't need to provide an access token.
 
 ### `variables`
 

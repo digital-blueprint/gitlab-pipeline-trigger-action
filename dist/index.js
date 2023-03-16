@@ -17334,6 +17334,7 @@ const pollPipeline = async (host, id, token, pipelineId) => {
         try {
             const response = await axios.get(url, {
                 headers: {
+                    // Token can be empty for public projects
                     'PRIVATE-TOKEN': token,
                 },
             });

@@ -23,7 +23,7 @@ inputs:
     default: ''
   access_token:
     description: 'Pipeline Access Token, see https://gitlab.tugraz.at/help/user/project/settings/project_access_tokens'
-    required: true
+    required: false
     default: ''
   variables:
     description: 'A map of key-valued strings containing the pipeline variables. For example: { VAR1: "value1", VAR2: "value2" }.'

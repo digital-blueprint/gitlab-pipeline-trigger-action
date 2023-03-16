@@ -21,7 +21,8 @@ jobs:
           # Triggers https://gitlab.tugraz.at/dbp/gitlab-pipeline-trigger-action-example/-/pipelines
           host: 'gitlab.tugraz.at'
           trigger_token: ${{ secrets.DEPLOY_TRIGGER_TOKEN }}
-          access_token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
+          # not needed for public repos
+          #access_token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
           id: '28108'
           ref: 'main'
           variables: '{"VAR1":"value1","VAR2":"value2"}'
