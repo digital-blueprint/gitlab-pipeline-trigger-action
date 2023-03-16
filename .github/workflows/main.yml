@@ -18,12 +18,12 @@ jobs:
         uses: ./
         id: test
         with:
-          # Triggers https://gitlab.tugraz.at/dbp/gitlab-pipeline-trigger-action-example/-/pipelines
-          host: 'gitlab.tugraz.at'
+          # Triggers https://gitlab.com/digital-blueprint/gitlab-pipeline-trigger-action-example/-/pipelines
+          host: 'gitlab.com'
           trigger_token: ${{ secrets.DEPLOY_TRIGGER_TOKEN }}
           # not needed for public repos
           #access_token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
-          id: '28108'
+          id: '44347238'
           ref: 'main'
           variables: '{"VAR1":"value1","VAR2":"value2"}'
       - name: Get the output status
