@@ -20,6 +20,7 @@ The GitLab host to trigger the pipeline on. Default `gitlab.com`.
 ### `id`
 
 **Required** The ID or path of the project owned by the authenticated user.
+You will find the *Project ID* in the *General Settings* of your GitLab project.
 
 ### `ref`
 
