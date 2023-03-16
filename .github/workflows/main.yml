@@ -18,6 +18,7 @@ jobs:
         uses: ./
         id: test
         with:
+          # Triggers https://gitlab.tugraz.at/dbp/gitlab-pipeline-trigger-action-example/-/pipelines
           host: 'gitlab.tugraz.at'
           trigger_token: ${{ secrets.DEPLOY_TRIGGER_TOKEN }}
           access_token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
