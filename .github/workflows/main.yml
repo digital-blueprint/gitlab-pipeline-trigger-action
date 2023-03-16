@@ -1,10 +1,10 @@
 name: Test action
 on:
-#  push:
-#    branches:
-#      - main
-#    tags-ignore:
-#      - '*'
+  push:
+    branches:
+      - main
+    tags-ignore:
+      - '*'
   workflow_dispatch:
 
 jobs:
@@ -21,8 +21,8 @@ jobs:
           host: 'gitlab.tugraz.at'
           trigger_token: ${{ secrets.DEPLOY_TRIGGER_TOKEN }}
           access_token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
-          id: '21238'
+          id: '28108'
           ref: 'main'
-          variables: '{"UPSTREAM_PROJECT_PATH":"dbp/dispatch/dispatch","UPSTREAM_COMMIT_BRANCH":"${{ github.ref_name }}","UPSTREAM_COMMIT_SHA":"${{ github.ref_name }}"}'
+          variables: '{"VAR1":"value1","VAR2":"value2"}'
       - name: Get the output status
         run: echo "The status was ${{ steps.test.outputs.status }}"
