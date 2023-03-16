@@ -11,6 +11,23 @@ You can for example use this action in your GitHub workflow to trigger a deploym
 GitLab server after a successful build pipeline and wait for the deployment (with possible End2End tests)
 to finish, so you would get a notification if the deployment failed.
 
+```mermaid
+sequenceDiagram
+    participant GITHUB as GitHub Actions
+    participant ACTION as Action
+    participant GITLAB as GitLab CI
+
+    GITHUB->>ACTION: Run action
+    ACTION->>GITLAB: Trigger a new pipeline
+
+loop Every 15 seconds
+    ACTION->>GITLAB: Poll pipeline status
+    GITLAB-->>ACTION: Current pipeline status
+end
+
+    ACTION-->>GITHUB: Final pipeline status
+```
+
 ## Inputs
 
 ### `host`
