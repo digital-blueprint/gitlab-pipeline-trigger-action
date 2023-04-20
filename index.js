@@ -17,10 +17,10 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
  * - skipped: The pipeline was skipped due to a configuration option or a pipeline rule.
  * - manual: The pipeline is waiting for a user to trigger it manually.
  */
-const pollPipeline = async (host, id, token, pipelineId) => {
+const pollPipeline = async (host, projectId, token, pipelineId, webUrl) => {
     console.log(`Polling pipeline ${pipelineId} on ${host}!`);
 
-    const url = `https://${host}/api/v4/projects/${id}/pipelines/${pipelineId}`;
+    const url = `https://${host}/api/v4/projects/${projectId}/pipelines/${pipelineId}`;
     let status = 'pending';
     const breakStatusList = ['failed', 'success', 'canceled', 'skipped'];
 
@@ -38,7 +38,7 @@ const pollPipeline = async (host, id, token, pipelineId) => {
 
             status = response.data.status;
             core.setOutput("status", status);
-            console.log(`Pipeline status: ${status}`);
+            console.log(`Pipeline status: ${status} (${webUrl})`);
 
             if (status === 'failed') {
                 core.setFailed(`Pipeline failed!`);
@@ -82,7 +82,7 @@ try {
             console.log(`Pipeline id ${data.id} triggered! See ${data.web_url} for details.`);
 
             // poll pipeline status
-            pollPipeline(host, projectId, accessToken, data.id);
+            pollPipeline(host, projectId, accessToken, data.id, data.web_url);
         })
         .catch(function (error) {
             // handle error
