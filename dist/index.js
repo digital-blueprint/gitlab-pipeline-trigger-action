@@ -10585,7 +10585,7 @@ const pollPipeline = async (host, projectId, token, pipelineId, webUrl) => {
     return status;
 }
 
-try {
+async function run() {
     const host = encodeURIComponent(core.getInput('host'));
     const projectId = encodeURIComponent(core.getInput('id'));
     const triggerToken = core.getInput('trigger_token');
@@ -10594,33 +10594,30 @@ try {
     const variables = JSON.parse(core.getInput('variables'));
 
     console.log(`Triggering pipeline ${projectId} with ref ${ref} on ${host}!`);
-    const url = `https://${host}/api/v4/projects/${projectId}/trigger/pipeline`;
 
-    // https://docs.gitlab.com/ee/api/pipeline_triggers.html#trigger-a-pipeline-with-a-token
-    axios.post(url, {
-        token: triggerToken,
-        ref: ref,
-        variables: variables,
-    })
-        .then(function (response) {
-            const data = response.data;
+    try {
+        const url = `https://${host}/api/v4/projects/${projectId}/trigger/pipeline`;
 
-            core.setOutput("id", data.id);
-            core.setOutput("status", data.status);
-            console.log(`Pipeline id ${data.id} triggered! See ${data.web_url} for details.`);
-
-            // poll pipeline status
-            pollPipeline(host, projectId, accessToken, data.id, data.web_url);
+        // https://docs.gitlab.com/ee/api/pipeline_triggers.html#trigger-a-pipeline-with-a-token
+        let response = await axios.post(url, {
+            token: triggerToken,
+            ref: ref,
+            variables: variables,
         })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-            core.setFailed(error);
-        });
-} catch (error) {
-    core.setFailed(error.message);
+        const data = response.data;
+
+        core.setOutput("id", data.id);
+        core.setOutput("status", data.status);
+        console.log(`Pipeline id ${data.id} triggered! See ${data.web_url} for details.`);
+
+        // poll pipeline status
+        await pollPipeline(host, projectId, accessToken, data.id, data.web_url);
+    } catch (error) {
+        core.setFailed(error.message);
+    }
 }
 
+run()
 })();
 
 module.exports = __webpack_exports__;
