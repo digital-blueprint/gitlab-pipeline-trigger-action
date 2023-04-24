@@ -85,9 +85,7 @@ try {
             pollPipeline(host, projectId, accessToken, data.id, data.web_url);
         })
         .catch(function (error) {
-            // handle error
-            console.log(error);
-            core.setFailed(error);
+            core.setFailed(error.message);
         });
 } catch (error) {
     core.setFailed(error.message);
