@@ -1,5 +1,4 @@
 const core = require('@actions/core');
-const axios = require('axios');
 
 const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -29,14 +28,16 @@ const pollPipeline = async (host, projectId, token, pipelineId, webUrl) => {
         await wait(15000);
 
         try {
-            const response = await axios.get(url, {
+            const response = await fetch(url, {
+                method: 'GET',
                 headers: {
-                    // Token can be empty for public projects
                     'PRIVATE-TOKEN': token,
+                    'Accept': 'application/json',
                 },
             });
+            const data = await response.json();
 
-            status = response.data.status;
+            status = data.status;
             core.setOutput("status", status);
             console.log(`Pipeline status: ${status} (${webUrl})`);
 
@@ -71,12 +72,18 @@ async function run() {
         const url = `https://${host}/api/v4/projects/${projectId}/trigger/pipeline`;
 
         // https://docs.gitlab.com/ee/api/pipeline_triggers.html#trigger-a-pipeline-with-a-token
-        let response = await axios.post(url, {
-            token: triggerToken,
-            ref: ref,
-            variables: variables,
-        })
-        const data = response.data;
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                token: triggerToken,
+                ref: ref,
+                variables: variables,
+            }),
+        });
+        const data = await response.json();
 
         core.setOutput("id", data.id);
         core.setOutput("status", data.status);
