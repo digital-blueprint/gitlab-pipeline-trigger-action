@@ -87,6 +87,7 @@ async function run() {
 
         core.setOutput("id", data.id);
         core.setOutput("status", data.status);
+        core.setOutput("web_url", data.web_url);
         console.log(`Pipeline id ${data.id} triggered! See ${data.web_url} for details.`);
 
         // poll pipeline status
