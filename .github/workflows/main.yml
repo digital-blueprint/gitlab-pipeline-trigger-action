@@ -28,3 +28,5 @@ jobs:
           variables: '{"VAR1":"value1","VAR2":"value2"}'
       - name: Get the output status
         run: echo "The status was ${{ steps.test.outputs.status }}"
+      - name: Get the output web_url
+        run: echo "The web_url was ${{ steps.test.outputs.web_url }}"

@@ -66,6 +66,10 @@ A map of key-valued strings containing the pipeline variables. For example: `{ V
 The last status of the pipeline. See [GitLab project pipelines](https://docs.gitlab.com/ee/api/pipelines.html#list-project-pipelines)
 for more information about which status values there are.
 
+### `web_url`
+
+The URL of the pipeline, for example `https://example.com/foo/bar/pipelines/47`.
+
 ## Example usage
 
 ```yaml
