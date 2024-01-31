@@ -68,7 +68,7 @@ for more information about which status values there are.
 
 ### `web_url`
 
-The URL of the pipeline, for example `https://example.com/foo/bar/pipelines/47`.
+The URL of the pipeline, for example `https://gitlab.com/foo/bar/pipelines/47`.
 
 ## Example usage
 
