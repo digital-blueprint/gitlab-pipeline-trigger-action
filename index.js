@@ -35,6 +35,16 @@ const pollPipeline = async (host, projectId, token, pipelineId, webUrl) => {
                     'Accept': 'application/json',
                 },
             });
+
+            if (!response.ok) {
+                let errorMessage = `GitLab API returned status code ${response.status}.`;
+                if (response.status === 401) {
+                    errorMessage = "Unauthorized: invalid/expired access token was used.";
+                }
+                core.setFailed(errorMessage);
+                break;
+            }
+
             const data = await response.json();
 
             status = data.status;
@@ -83,6 +93,15 @@ async function run() {
                 variables: variables,
             }),
         });
+
+        if (!response.ok) {
+            let errorMessage = `GitLab API returned status code ${response.status}.`;
+            if (response.status === 404) {
+                errorMessage = "The specified resource does not exist, or an invalid/expired trigger token was used.";
+            }
+            return core.setFailed(errorMessage);
+        }
+
         const data = await response.json();
 
         core.setOutput("id", data.id);
