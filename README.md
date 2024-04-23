@@ -57,7 +57,7 @@ For public projects you don't need to provide an access token.
 
 ### `variables`
 
-A map of key-valued strings containing the pipeline variables. For example: `{ VAR1: "value1", VAR2: "value2" }`.. Default `"World"`.
+A map of key-valued strings containing the pipeline variables. For example: `{ VAR1: "value1", VAR2: "value2" }`. The value has to be valid JSON. If not set the default is `{}`.
 
 ## Outputs
 
