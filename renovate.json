@@ -4,9 +4,5 @@
     "config:base"
   ],
   "packageRules": [
-    {
-      "matchPackageNames": ["eslint"],
-      "allowedVersions": "<9"
-    }
   ]
 }
