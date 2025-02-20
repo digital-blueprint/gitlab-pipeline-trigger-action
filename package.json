@@ -9,7 +9,7 @@
   "devDependencies": {
     "@vercel/ncc": "^0.38.0",
     "eslint": "^9.0",
-    "globals": "^15.3.0"
+    "globals": "^16.0.0"
   },
   "scripts": {
     "build": "ncc build index.js --license licenses.txt",
