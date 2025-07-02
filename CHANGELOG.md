@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.2.1
+
+- Updated `@actions/core` from `1.10.1` to `1.11.1`
+
 ## v1.2.0
 
 - add: invalid access/trigger token error handling (for [#34](https://github.com/digital-blueprint/gitlab-pipeline-trigger-action/issues/34), thank you, @nepalevov)
