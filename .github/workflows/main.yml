@@ -21,12 +21,28 @@ jobs:
           # Triggers https://gitlab.com/digital-blueprint/gitlab-pipeline-trigger-action-example/-/pipelines
           host: 'gitlab.com'
           trigger_token: ${{ secrets.DEPLOY_TRIGGER_TOKEN }}
-          # not needed for public repos
-          #access_token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
+          # Access token is required for private repositories and downloading artifacts/logs.
+          access_token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
           id: '44347238'
           ref: 'main'
           variables: '{"VAR1":"value1","VAR2":"value2"}'
+          download_artifacts: 'true'
+          download_job_logs: 'true'
+          download_path: './gitlab-artifacts'
+
+      - name: List downloaded artifacts and job logs
+        run: |
+          echo "Artifacts directory contents:"
+          ls -la ./gitlab-artifacts || echo "No artifacts directory found"
+          if [ -d "./gitlab-artifacts" ]; then
+            find ./gitlab-artifacts -type f | head -20
+          fi
+
       - name: Get the output status
         run: echo "The status was ${{ steps.test.outputs.status }}"
+
       - name: Get the output web_url
         run: echo "The web_url was ${{ steps.test.outputs.web_url }}"
+
+      - name: Get the output artifacts_downloaded
+        run: echo "The artifacts_downloaded was ${{ steps.test.outputs.artifacts_downloaded }}"
