@@ -265,21 +265,23 @@ const downloadArtifacts = async (
                 }
 
                 const artifactBuffer = await artifactResponse.arrayBuffer();
-                const jobArtifactsPath = path.join(
+                const jobPath = path.join(
                     downloadPath,
                     `job_${job.id}_${job.name.replace(/[^a-zA-Z0-9]/g, '_')}`,
                 );
 
                 // Create job-specific directory
-                await io.mkdirP(jobArtifactsPath);
+                await io.mkdirP(jobPath);
 
                 // Save the zip file
-                const zipPath = path.join(jobArtifactsPath, 'artifacts.zip');
+                const zipPath = path.join(jobPath, 'artifacts.zip');
                 fs.writeFileSync(zipPath, Buffer.from(artifactBuffer));
 
                 // Extract the zip file
+                const artifactsPath = path.join(jobPath, 'artifacts');
+                await io.mkdirP(artifactsPath);
                 const zip = new AdmZip(zipPath);
-                zip.extractAllTo(jobArtifactsPath, true);
+                zip.extractAllTo(artifactsPath, true);
 
                 // Remove the zip file after extraction
                 fs.unlinkSync(zipPath);
