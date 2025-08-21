@@ -5,6 +5,7 @@
 {
   languages = {
     javascript.enable = true;
+    javascript.npm.enable = true;
     nix.enable = true;
   };
 
