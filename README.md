@@ -194,12 +194,14 @@ The artifacts and logs are organized as follows:
 ```
 download_path/
 ├── job_123_job_name_1/
-│   ├── artifact1.txt    # Artifacts (if download_artifacts enabled)
-│   ├── artifact2.txt    # Artifacts (if download_artifacts enabled)
+│   ├── artifacts/       # Artifacts subdirectory (if download_artifacts enabled)
+│   │   ├── artifact1.txt
+│   │   └── artifact2.txt
 │   └── job.log          # Console output (if download_job_logs enabled)
 ├── job_124_job_name_2/
-│   ├── build/           # Artifacts (if download_artifacts enabled)
-│   ├── dist/            # Artifacts (if download_artifacts enabled)
+│   ├── artifacts/       # Artifacts subdirectory (if download_artifacts enabled)
+│   │   ├── build/
+│   │   └── dist/
 │   └── job.log          # Console output (if download_job_logs enabled)
 └── ...
 ```
