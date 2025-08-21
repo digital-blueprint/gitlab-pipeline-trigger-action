@@ -3,3 +3,13 @@ node_modules
 npm-debug.log
 .vscode
 .cert
+
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
