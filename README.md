@@ -43,7 +43,7 @@ The GitLab host to trigger the pipeline on. Default `gitlab.com`.
 ### `id`
 
 **Required** The ID or path of the project owned by the authenticated user.
-You will find the *Project ID* in the *General Settings* of your GitLab project.
+You will find the _Project ID_ in the _General Settings_ of your GitLab project.
 
 ### `ref`
 
@@ -122,11 +122,11 @@ Whether artifacts were successfully downloaded. Only set when `download_artifact
 ```yaml
 uses: digital-blueprint/gitlab-pipeline-trigger-action@v1
 with:
-  host: 'gitlab.example.com'
+  host: "gitlab.example.com"
   trigger_token: ${{ secrets.DEPLOY_TRIGGER_TOKEN }}
   access_token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
-  id: '123'
-  ref: 'main'
+  id: "123"
+  ref: "main"
   variables: '{"VAR1":"value1","VAR2":"value2"}'
 ```
 
@@ -135,14 +135,14 @@ with:
 ```yaml
 uses: digital-blueprint/gitlab-pipeline-trigger-action@v1
 with:
-  host: 'gitlab.example.com'
+  host: "gitlab.example.com"
   trigger_token: ${{ secrets.DEPLOY_TRIGGER_TOKEN }}
   access_token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
-  id: '123'
-  ref: 'main'
+  id: "123"
+  ref: "main"
   variables: '{"VAR1":"value1","VAR2":"value2"}'
-  download_artifacts: 'true'
-  download_path: './build-artifacts'
+  download_artifacts: "true"
+  download_path: "./build-artifacts"
 ```
 
 ### With job logs
@@ -150,14 +150,14 @@ with:
 ```yaml
 uses: digital-blueprint/gitlab-pipeline-trigger-action@v1
 with:
-  host: 'gitlab.example.com'
+  host: "gitlab.example.com"
   trigger_token: ${{ secrets.DEPLOY_TRIGGER_TOKEN }}
   access_token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
-  id: '123'
-  ref: 'main'
+  id: "123"
+  ref: "main"
   variables: '{"VAR1":"value1","VAR2":"value2"}'
-  download_job_logs: 'true'
-  download_path: './pipeline-logs'
+  download_job_logs: "true"
+  download_path: "./pipeline-logs"
 ```
 
 ## Downloading artifacts and job logs
@@ -168,10 +168,12 @@ When `download_artifacts` is enabled and `access_token` is provided, the action 
 - **Pipeline fails**: The artifacts are downloaded if `download_artifacts_on_failure` is enabled. Default `true`.
 
 **Artifact Validation:**
+
 - If `fail_if_no_artifacts` is enabled, the action will fail if no artifacts are found.
 - This helps ensure pipelines generate expected outputs and catch configuration issues early.
 
 **Job Logs:**
+
 - If `download_job_logs` is enabled, console output from all jobs will be downloaded.
 - Logs are saved as `job.log` files in each job's directory.
 - This provides complete visibility into pipeline execution for debugging.
@@ -188,6 +190,7 @@ The action will:
 7. Save logs as `job.log` files in each job's directory.
 
 The artifacts and logs are organized as follows:
+
 ```
 download_path/
 ├── job_123_job_name_1/

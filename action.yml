@@ -1,65 +1,65 @@
-name: 'GitLab Pipeline Trigger'
-description: 'Triggers and waits for a GitLab pipeline to complete'
-author: 'Patrizio Bekerle <patrizio@bekerle.com>'
+name: "GitLab Pipeline Trigger"
+description: "Triggers and waits for a GitLab pipeline to complete"
+author: "Patrizio Bekerle <patrizio@bekerle.com>"
 branding:
-  icon: 'git-commit'
-  color: 'orange'
+  icon: "git-commit"
+  color: "orange"
 inputs:
   host:
-    description: 'The GitLab host to trigger the pipeline.'
+    description: "The GitLab host to trigger the pipeline."
     required: false
-    default: 'gitlab.com'
+    default: "gitlab.com"
   id:
-    description: 'The ID or URL-encoded path of the project owned by the authenticated user.'
+    description: "The ID or URL-encoded path of the project owned by the authenticated user."
     required: true
-    default: ''
+    default: ""
   ref:
-    description: 'The branch or tag to run the pipeline on.'
+    description: "The branch or tag to run the pipeline on."
     required: true
-    default: ''
+    default: ""
   trigger_token:
-    description: 'Pipeline Trigger Token, see https://docs.gitlab.com/ee/ci/triggers/index.html#create-a-trigger-token'
+    description: "Pipeline Trigger Token, see https://docs.gitlab.com/ee/ci/triggers/index.html#create-a-trigger-token"
     required: true
-    default: ''
+    default: ""
   access_token:
-    description: 'Pipeline Access Token, see https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html'
+    description: "Pipeline Access Token, see https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html"
     required: false
-    default: ''
+    default: ""
   variables:
     description: 'A map of key-valued strings containing the pipeline variables. For example: { VAR1: "value1", VAR2: "value2" }.'
     required: false
-    default: '{}'
+    default: "{}"
   download_artifacts:
-    description: 'Whether to download the pipeline artifacts. Requires access_token to be set.'
+    description: "Whether to download the pipeline artifacts. Requires access_token to be set."
     required: false
-    default: 'false'
+    default: "false"
   download_artifacts_on_failure:
-    description: 'Whether to download artifacts even when the pipeline fails. Requires access_token and download_artifacts to be set.'
+    description: "Whether to download artifacts even when the pipeline fails. Requires access_token and download_artifacts to be set."
     required: false
-    default: 'true'
+    default: "true"
   download_job_logs:
-    description: 'Whether to download job console output. Requires access_token to be set.'
+    description: "Whether to download job console output. Requires access_token to be set."
     required: false
-    default: 'false'
+    default: "false"
   fail_if_no_artifacts:
-    description: 'Whether to fail the action if no artifacts are found. Requires download_artifacts to be enabled.'
+    description: "Whether to fail the action if no artifacts are found. Requires download_artifacts to be enabled."
     required: false
-    default: 'false'
+    default: "false"
   download_path:
-    description: 'Path where to save downloaded artifacts and logs. Defaults to ./downloads'
+    description: "Path where to save downloaded artifacts and logs. Defaults to ./downloads"
     required: false
-    default: './downloads'
+    default: "./downloads"
   verbose:
-    description: 'Whether to enable verbose logging. When disabled, only generic messages are shown without sensitive information like URLs, IDs, or names.'
+    description: "Whether to enable verbose logging. When disabled, only generic messages are shown without sensitive information like URLs, IDs, or names."
     required: false
-    default: 'false'
+    default: "false"
 outputs:
   status:
-    description: 'The status of the pipeline.'
+    description: "The status of the pipeline."
   web_url:
-    description: 'The URL of the pipeline.'
+    description: "The URL of the pipeline."
   artifacts_downloaded:
-    description: 'Whether artifacts were successfully downloaded.'
+    description: "Whether artifacts were successfully downloaded."
 runs:
-  using: 'node20'
-  main: 'dist/index.js'
+  using: "node20"
+  main: "dist/index.js"
