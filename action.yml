@@ -29,11 +29,37 @@ inputs:
     description: 'A map of key-valued strings containing the pipeline variables. For example: { VAR1: "value1", VAR2: "value2" }.'
     required: false
     default: '{}'
+  download_artifacts:
+    description: 'Whether to download the pipeline artifacts. Requires access_token to be set.'
+    required: false
+    default: 'false'
+  download_artifacts_on_failure:
+    description: 'Whether to download artifacts even when the pipeline fails. Requires access_token and download_artifacts to be set.'
+    required: false
+    default: 'true'
+  download_job_logs:
+    description: 'Whether to download job console output. Requires access_token to be set.'
+    required: false
+    default: 'false'
+  fail_if_no_artifacts:
+    description: 'Whether to fail the action if no artifacts are found. Requires download_artifacts to be enabled.'
+    required: false
+    default: 'false'
+  download_path:
+    description: 'Path where to save downloaded artifacts and logs. Defaults to ./downloads'
+    required: false
+    default: './downloads'
+  verbose:
+    description: 'Whether to enable verbose logging. When disabled, only generic messages are shown without sensitive information like URLs, IDs, or names.'
+    required: false
+    default: 'false'
 outputs:
   status:
     description: 'The status of the pipeline.'
   web_url:
     description: 'The URL of the pipeline.'
+  artifacts_downloaded:
+    description: 'Whether artifacts were successfully downloaded.'
 runs:
   using: 'node20'
   main: 'dist/index.js'

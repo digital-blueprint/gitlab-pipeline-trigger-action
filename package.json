@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.11.1"
+    "@actions/core": "^1.11.1",
+    "@actions/io": "^1.1.2",
+    "adm-zip": "^0.5.10"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.38.3",
