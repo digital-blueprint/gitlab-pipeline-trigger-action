@@ -122,12 +122,12 @@ Whether artifacts were successfully downloaded. Only set when `download_artifact
 ```yaml
 uses: digital-blueprint/gitlab-pipeline-trigger-action@v1
 with:
-  host: "gitlab.example.com"
-  trigger_token: ${{ secrets.DEPLOY_TRIGGER_TOKEN }}
-  access_token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
-  id: "123"
-  ref: "main"
-  variables: '{"VAR1":"value1","VAR2":"value2"}'
+    host: 'gitlab.example.com'
+    trigger_token: ${{ secrets.DEPLOY_TRIGGER_TOKEN }}
+    access_token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
+    id: '123'
+    ref: 'main'
+    variables: '{"VAR1":"value1","VAR2":"value2"}'
 ```
 
 ### With artifact downloading
@@ -135,14 +135,14 @@ with:
 ```yaml
 uses: digital-blueprint/gitlab-pipeline-trigger-action@v1
 with:
-  host: "gitlab.example.com"
-  trigger_token: ${{ secrets.DEPLOY_TRIGGER_TOKEN }}
-  access_token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
-  id: "123"
-  ref: "main"
-  variables: '{"VAR1":"value1","VAR2":"value2"}'
-  download_artifacts: "true"
-  download_path: "./build-artifacts"
+    host: 'gitlab.example.com'
+    trigger_token: ${{ secrets.DEPLOY_TRIGGER_TOKEN }}
+    access_token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
+    id: '123'
+    ref: 'main'
+    variables: '{"VAR1":"value1","VAR2":"value2"}'
+    download_artifacts: 'true'
+    download_path: './build-artifacts'
 ```
 
 ### With job logs
@@ -150,14 +150,14 @@ with:
 ```yaml
 uses: digital-blueprint/gitlab-pipeline-trigger-action@v1
 with:
-  host: "gitlab.example.com"
-  trigger_token: ${{ secrets.DEPLOY_TRIGGER_TOKEN }}
-  access_token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
-  id: "123"
-  ref: "main"
-  variables: '{"VAR1":"value1","VAR2":"value2"}'
-  download_job_logs: "true"
-  download_path: "./pipeline-logs"
+    host: 'gitlab.example.com'
+    trigger_token: ${{ secrets.DEPLOY_TRIGGER_TOKEN }}
+    access_token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
+    id: '123'
+    ref: 'main'
+    variables: '{"VAR1":"value1","VAR2":"value2"}'
+    download_job_logs: 'true'
+    download_path: './pipeline-logs'
 ```
 
 ## Downloading artifacts and job logs
