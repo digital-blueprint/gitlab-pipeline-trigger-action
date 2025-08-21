@@ -10,7 +10,7 @@ on:
 jobs:
   test_job:
     runs-on: ubuntu-latest
-    name: A test job
+    name: Test GitHub action
     steps:
       - name: Checkout
         uses: actions/checkout@v5
