@@ -2,8 +2,8 @@
 
 ## v1.3.0
 
-- Add support for downloading artifacts and logs (for [#96](https://github.com/digital-blueprint/gitlab-pipeline-trigger-action/pull/96), thank you, @lucasssvaz)
-- Updated dependency
+- Added support for downloading artifacts and logs (for [#96](https://github.com/digital-blueprint/gitlab-pipeline-trigger-action/pull/96), thank you, @lucasssvaz)
+- Updated dependencies
 
 ## v1.2.1
 
