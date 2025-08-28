@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.3.0
+
+- Add support for downloading artifacts and logs (for [#96](https://github.com/digital-blueprint/gitlab-pipeline-trigger-action/pull/96), thank you, @lucasssvaz)
+- Updated dependency
+
 ## v1.2.1
 
 - Updated `@actions/core` from `1.10.1` to `1.11.1`
