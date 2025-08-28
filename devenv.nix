@@ -22,10 +22,14 @@
     welcome
   '';
 
-  enterTest = ''
-    # Install dependencies for eslint
-    npm install
-  '';
+  # https://devenv.sh/tasks/
+  tasks = {
+    # Install dependencies for eslint before the git hook runs
+    "npm:install" = {
+      exec = "npm install";
+      before = [ "devenv:git-hooks:run" ];
+    };
+  };
 
   # https://devenv.sh/git-hooks/
   git-hooks.hooks = {
