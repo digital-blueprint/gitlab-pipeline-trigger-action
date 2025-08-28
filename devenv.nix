@@ -22,8 +22,14 @@
     welcome
   '';
 
+  enterTest = ''
+    # Install dependencies for eslint
+    npm install
+  '';
+
   # https://devenv.sh/git-hooks/
   git-hooks.hooks = {
+    # https://devenv.sh/reference/options/#git-hookshookseclint
     eslint.enable = true;
 
     # https://devenv.sh/reference/options/#git-hookshookstreefmt
