@@ -1,8 +1,8 @@
-const core = require('@actions/core');
-const io = require('@actions/io');
-const fs = require('fs');
-const path = require('path');
-const AdmZip = require('adm-zip');
+import core from '@actions/core';
+import io from '@actions/io';
+import fs from 'node:fs';
+import path from 'node:path';
+import AdmZip from 'adm-zip';
 
 // Helper functions for logging
 const verboseLog = (message) => {
