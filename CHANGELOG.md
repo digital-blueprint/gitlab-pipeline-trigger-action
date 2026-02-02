@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.4.0
+
+- Updated dependencies
+- bump to node24
+
 ## v1.3.0
 
 - Added support for downloading artifacts and logs (for [#96](https://github.com/digital-blueprint/gitlab-pipeline-trigger-action/pull/96), thank you, @lucasssvaz)
