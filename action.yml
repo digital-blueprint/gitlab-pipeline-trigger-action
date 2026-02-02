@@ -61,5 +61,5 @@ outputs:
   artifacts_downloaded:
     description: "Whether artifacts were successfully downloaded."
 runs:
-  using: "node20"
+  using: "node24"
   main: "dist/index.js"
