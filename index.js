@@ -1,5 +1,5 @@
-import core from '@actions/core';
-import io from '@actions/io';
+import * as core from '@actions/core';
+import * as io from '@actions/io';
 import fs from 'node:fs';
 import path from 'node:path';
 import AdmZip from 'adm-zip';
