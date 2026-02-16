@@ -10,6 +10,7 @@
     "adm-zip": "^0.5.10"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@vercel/ncc": "^0.38.3",
     "eslint": "^10.0.0",
     "globals": "^17.0.0"
