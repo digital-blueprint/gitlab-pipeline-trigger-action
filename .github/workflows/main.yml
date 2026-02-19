@@ -7,13 +7,17 @@ on:
       - "*"
   workflow_dispatch:
 
+permissions: {}
+
 jobs:
   test_job:
     runs-on: ubuntu-latest
     name: Test GitHub action
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
       - name: Test action step
         uses: ./
         id: test
@@ -39,10 +43,16 @@ jobs:
           fi
 
       - name: Get the output status
-        run: echo "The status was ${{ steps.test.outputs.status }}"
+        run: echo "The status was ${STEPS_TEST_OUTPUTS_STATUS}"
+        env:
+          STEPS_TEST_OUTPUTS_STATUS: ${{ steps.test.outputs.status }}
 
       - name: Get the output web_url
-        run: echo "The web_url was ${{ steps.test.outputs.web_url }}"
+        run: echo "The web_url was ${STEPS_TEST_OUTPUTS_WEB_URL}"
+        env:
+          STEPS_TEST_OUTPUTS_WEB_URL: ${{ steps.test.outputs.web_url }}
 
       - name: Get the output artifacts_downloaded
-        run: echo "The artifacts_downloaded was ${{ steps.test.outputs.artifacts_downloaded }}"
+        run: echo "The artifacts_downloaded was ${STEPS_TEST_OUTPUTS_ARTIFACTS_DOWNLOADED}"
+        env:
+          STEPS_TEST_OUTPUTS_ARTIFACTS_DOWNLOADED: ${{ steps.test.outputs.artifacts_downloaded }}
