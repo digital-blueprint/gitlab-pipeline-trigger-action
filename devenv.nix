@@ -1,14 +1,7 @@
 # devenv.nix
 # Nix development environment configuration
 
-{ pkgs, ... }:
 {
-  languages = {
-    javascript.enable = true;
-    javascript.npm.enable = true;
-    nix.enable = true;
-  };
-
   # Custom scripts available in the dev environment
   scripts = {
     # Shows the current Node.js version and a welcome message with emotes
@@ -28,35 +21,6 @@
     "npm:install" = {
       exec = "npm install";
       before = [ "devenv:git-hooks:run" ];
-    };
-  };
-
-  # https://devenv.sh/git-hooks/
-  git-hooks.hooks = {
-    # https://devenv.sh/reference/options/#git-hookshookseclint
-    eslint.enable = true;
-
-    # https://devenv.sh/reference/options/#git-hookshookstreefmt
-    # https://github.com/numtide/treefmt
-    # https://github.com/numtide/treefmt-nix
-    treefmt = {
-      enable = true;
-      settings.formatters = with pkgs; [
-        nodePackages.prettier
-        nixfmt-rfc-style
-        statix
-        taplo
-        just
-      ];
-    };
-
-    # https://devenv.sh/reference/options/#git-hookshooksdeadnix
-    # https://github.com/astro/deadnix
-    deadnix = {
-      enable = true;
-      settings = {
-        edit = true; # Allow to edit the file if it is not formatted
-      };
     };
   };
 }
