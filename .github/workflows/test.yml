@@ -1,6 +1,7 @@
 name: Test
 on:
   push:
+  pull_request:
   workflow_dispatch:
 
 permissions: {}
@@ -21,3 +22,6 @@ jobs:
           npm ci
           npm run build
           npm run lint
+
+      - name: Check if the bundled output has changed
+        run: git diff --exit-code
