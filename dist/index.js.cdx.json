@@ -1,0 +1,352 @@
+{
+	"$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
+	"bomFormat": "CycloneDX",
+	"specVersion": "1.6",
+	"version": 1,
+	"metadata": {
+		"lifecycles": [
+			{
+				"phase": "build"
+			}
+		],
+		"tools": [
+			{
+				"name": "rollup-plugin-sbom",
+				"version": "3.2.0",
+				"externalReferences": [
+					{
+						"url": "git+https://github.com/janbiasi/rollup-plugin-sbom.git",
+						"type": "vcs",
+						"comment": "as detected from PackageJson property \"repository.url\""
+					},
+					{
+						"url": "https://github.com/janbiasi/rollup-plugin-sbom#readme",
+						"type": "website",
+						"comment": "as detected from PackageJson property \"homepage\""
+					},
+					{
+						"url": "https://github.com/janbiasi/rollup-plugin-sbom/issues",
+						"type": "issue-tracker",
+						"comment": "as detected from PackageJson property \"bugs.url\""
+					}
+				]
+			},
+			{
+				"name": "rolldown",
+				"version": "1.0.1",
+				"externalReferences": [
+					{
+						"url": "git+https://github.com/rolldown/rolldown.git#packages/rolldown",
+						"type": "vcs",
+						"comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
+					},
+					{
+						"url": "https://rolldown.rs/",
+						"type": "website",
+						"comment": "as detected from PackageJson property \"homepage\""
+					},
+					{
+						"url": "https://github.com/rolldown/rolldown/issues",
+						"type": "issue-tracker",
+						"comment": "as detected from PackageJson property \"bugs.url\""
+					}
+				]
+			}
+		],
+		"component": {
+			"type": "application",
+			"name": "gitlab-pipeline-trigger-action",
+			"version": "1.3.0",
+			"bom-ref": "pkg:npm/gitlab-pipeline-trigger-action@1.3.0",
+			"licenses": [
+				{
+					"license": {
+						"id": "MIT"
+					}
+				}
+			],
+			"purl": "pkg:npm/gitlab-pipeline-trigger-action@1.3.0"
+		}
+	},
+	"components": [
+		{
+			"type": "library",
+			"name": "core",
+			"group": "@actions",
+			"version": "3.0.1",
+			"bom-ref": "pkg:npm/%40actions/core@3.0.1?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Factions%2Ftoolkit.git%23packages%2Fcore",
+			"description": "Actions core lib",
+			"licenses": [
+				{
+					"license": {
+						"id": "MIT",
+						"acknowledgement": "declared"
+					}
+				}
+			],
+			"purl": "pkg:npm/%40actions/core@3.0.1?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Factions%2Ftoolkit.git%23packages%2Fcore",
+			"externalReferences": [
+				{
+					"url": "git+https://github.com/actions/toolkit.git#packages/core",
+					"type": "vcs",
+					"comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
+				},
+				{
+					"url": "https://github.com/actions/toolkit/tree/main/packages/core",
+					"type": "website",
+					"comment": "as detected from PackageJson property \"homepage\""
+				},
+				{
+					"url": "https://github.com/actions/toolkit/issues",
+					"type": "issue-tracker",
+					"comment": "as detected from PackageJson property \"bugs.url\""
+				}
+			]
+		},
+		{
+			"type": "library",
+			"name": "tunnel",
+			"version": "0.0.6",
+			"bom-ref": "pkg:npm/tunnel@0.0.6?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fkoichik%2Fnode-tunnel.git",
+			"author": "Koichi Kobayashi",
+			"description": "Node HTTP/HTTPS Agents for tunneling proxies",
+			"licenses": [
+				{
+					"license": {
+						"id": "MIT",
+						"acknowledgement": "declared"
+					}
+				}
+			],
+			"purl": "pkg:npm/tunnel@0.0.6?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fkoichik%2Fnode-tunnel.git",
+			"externalReferences": [
+				{
+					"url": "git+https://github.com/koichik/node-tunnel.git",
+					"type": "vcs",
+					"comment": "as detected from PackageJson property \"repository.url\""
+				},
+				{
+					"url": "https://github.com/koichik/node-tunnel/",
+					"type": "website",
+					"comment": "as detected from PackageJson property \"homepage\""
+				},
+				{
+					"url": "https://github.com/koichik/node-tunnel/issues",
+					"type": "issue-tracker",
+					"comment": "as detected from PackageJson property \"bugs.url\""
+				}
+			]
+		},
+		{
+			"type": "library",
+			"name": "undici",
+			"version": "6.25.0",
+			"bom-ref": "pkg:npm/undici@6.25.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fnodejs%2Fundici.git",
+			"description": "An HTTP/1.1 client, written from scratch for Node.js",
+			"licenses": [
+				{
+					"license": {
+						"id": "MIT",
+						"acknowledgement": "declared"
+					}
+				}
+			],
+			"purl": "pkg:npm/undici@6.25.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fnodejs%2Fundici.git",
+			"externalReferences": [
+				{
+					"url": "git+https://github.com/nodejs/undici.git",
+					"type": "vcs",
+					"comment": "as detected from PackageJson property \"repository.url\""
+				},
+				{
+					"url": "https://undici.nodejs.org",
+					"type": "website",
+					"comment": "as detected from PackageJson property \"homepage\""
+				},
+				{
+					"url": "https://github.com/nodejs/undici/issues",
+					"type": "issue-tracker",
+					"comment": "as detected from PackageJson property \"bugs.url\""
+				}
+			]
+		},
+		{
+			"type": "library",
+			"name": "http-client",
+			"group": "@actions",
+			"version": "4.0.1",
+			"bom-ref": "pkg:npm/%40actions/http-client@4.0.1?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Factions%2Ftoolkit.git%23packages%2Fhttp-client",
+			"description": "Actions Http Client",
+			"licenses": [
+				{
+					"license": {
+						"id": "MIT",
+						"acknowledgement": "declared"
+					}
+				}
+			],
+			"purl": "pkg:npm/%40actions/http-client@4.0.1?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Factions%2Ftoolkit.git%23packages%2Fhttp-client",
+			"externalReferences": [
+				{
+					"url": "git+https://github.com/actions/toolkit.git#packages/http-client",
+					"type": "vcs",
+					"comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
+				},
+				{
+					"url": "https://github.com/actions/toolkit/tree/main/packages/http-client",
+					"type": "website",
+					"comment": "as detected from PackageJson property \"homepage\""
+				},
+				{
+					"url": "https://github.com/actions/toolkit/issues",
+					"type": "issue-tracker",
+					"comment": "as detected from PackageJson property \"bugs.url\""
+				}
+			]
+		},
+		{
+			"type": "library",
+			"name": "io",
+			"group": "@actions",
+			"version": "3.0.2",
+			"bom-ref": "pkg:npm/%40actions/io@3.0.2?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Factions%2Ftoolkit.git%23packages%2Fio",
+			"description": "Actions io lib",
+			"licenses": [
+				{
+					"license": {
+						"id": "MIT",
+						"acknowledgement": "declared"
+					}
+				}
+			],
+			"purl": "pkg:npm/%40actions/io@3.0.2?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Factions%2Ftoolkit.git%23packages%2Fio",
+			"externalReferences": [
+				{
+					"url": "git+https://github.com/actions/toolkit.git#packages/io",
+					"type": "vcs",
+					"comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
+				},
+				{
+					"url": "https://github.com/actions/toolkit/tree/main/packages/io",
+					"type": "website",
+					"comment": "as detected from PackageJson property \"homepage\""
+				},
+				{
+					"url": "https://github.com/actions/toolkit/issues",
+					"type": "issue-tracker",
+					"comment": "as detected from PackageJson property \"bugs.url\""
+				}
+			]
+		},
+		{
+			"type": "library",
+			"name": "exec",
+			"group": "@actions",
+			"version": "3.0.0",
+			"bom-ref": "pkg:npm/%40actions/exec@3.0.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Factions%2Ftoolkit.git%23packages%2Fexec",
+			"description": "Actions exec lib",
+			"licenses": [
+				{
+					"license": {
+						"id": "MIT",
+						"acknowledgement": "declared"
+					}
+				}
+			],
+			"purl": "pkg:npm/%40actions/exec@3.0.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Factions%2Ftoolkit.git%23packages%2Fexec",
+			"externalReferences": [
+				{
+					"url": "git+https://github.com/actions/toolkit.git#packages/exec",
+					"type": "vcs",
+					"comment": "as detected from PackageJson property \"repository.url\" and \"repository.directory\""
+				},
+				{
+					"url": "https://github.com/actions/toolkit/tree/main/packages/exec",
+					"type": "website",
+					"comment": "as detected from PackageJson property \"homepage\""
+				},
+				{
+					"url": "https://github.com/actions/toolkit/issues",
+					"type": "issue-tracker",
+					"comment": "as detected from PackageJson property \"bugs.url\""
+				}
+			]
+		},
+		{
+			"type": "library",
+			"name": "adm-zip",
+			"version": "0.5.17",
+			"bom-ref": "pkg:npm/adm-zip@0.5.17?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcthackers%2Fadm-zip.git",
+			"author": "Nasca Iacob",
+			"description": "Javascript implementation of zip for nodejs with support for electron original-fs. Allows user to create or extract zip files both in memory or to/from disk",
+			"licenses": [
+				{
+					"license": {
+						"id": "MIT",
+						"acknowledgement": "declared"
+					}
+				}
+			],
+			"purl": "pkg:npm/adm-zip@0.5.17?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcthackers%2Fadm-zip.git",
+			"externalReferences": [
+				{
+					"url": "git+https://github.com/cthackers/adm-zip.git",
+					"type": "vcs",
+					"comment": "as detected from PackageJson property \"repository.url\""
+				},
+				{
+					"url": "https://github.com/cthackers/adm-zip",
+					"type": "website",
+					"comment": "as detected from PackageJson property \"homepage\""
+				},
+				{
+					"url": "https://github.com/cthackers/adm-zip/issues",
+					"type": "issue-tracker",
+					"comment": "as detected from PackageJson property \"bugs.url\""
+				}
+			]
+		}
+	],
+	"dependencies": [
+		{
+			"ref": "pkg:npm/gitlab-pipeline-trigger-action@1.3.0",
+			"dependsOn": [
+				"pkg:npm/%40actions/core@3.0.1?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Factions%2Ftoolkit.git%23packages%2Fcore",
+				"pkg:npm/%40actions/io@3.0.2?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Factions%2Ftoolkit.git%23packages%2Fio",
+				"pkg:npm/adm-zip@0.5.17?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcthackers%2Fadm-zip.git"
+			]
+		},
+		{
+			"ref": "pkg:npm/%40actions/core@3.0.1?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Factions%2Ftoolkit.git%23packages%2Fcore",
+			"dependsOn": [
+				"pkg:npm/%40actions/http-client@4.0.1?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Factions%2Ftoolkit.git%23packages%2Fhttp-client",
+				"pkg:npm/%40actions/exec@3.0.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Factions%2Ftoolkit.git%23packages%2Fexec"
+			]
+		},
+		{
+			"ref": "pkg:npm/tunnel@0.0.6?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fkoichik%2Fnode-tunnel.git"
+		},
+		{
+			"ref": "pkg:npm/undici@6.25.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fnodejs%2Fundici.git"
+		},
+		{
+			"ref": "pkg:npm/%40actions/http-client@4.0.1?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Factions%2Ftoolkit.git%23packages%2Fhttp-client",
+			"dependsOn": [
+				"pkg:npm/tunnel@0.0.6?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fkoichik%2Fnode-tunnel.git",
+				"pkg:npm/undici@6.25.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fnodejs%2Fundici.git"
+			]
+		},
+		{
+			"ref": "pkg:npm/%40actions/io@3.0.2?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Factions%2Ftoolkit.git%23packages%2Fio"
+		},
+		{
+			"ref": "pkg:npm/%40actions/exec@3.0.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Factions%2Ftoolkit.git%23packages%2Fexec",
+			"dependsOn": [
+				"pkg:npm/%40actions/io@3.0.2?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Factions%2Ftoolkit.git%23packages%2Fio"
+			]
+		},
+		{
+			"ref": "pkg:npm/adm-zip@0.5.17?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcthackers%2Fadm-zip.git"
+		}
+	]
+}

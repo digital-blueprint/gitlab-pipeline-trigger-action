@@ -11,12 +11,13 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@vercel/ncc": "^0.38.3",
     "eslint": "^10.0.0",
-    "globals": "^17.0.0"
+    "globals": "^17.0.0",
+    "rolldown": "^1.0.1",
+    "rollup-plugin-sbom": "^3.2.0"
   },
   "scripts": {
-    "build": "ncc build index.js --license licenses.txt",
+    "build": "rolldown -c",
     "lint": "eslint ."
   }
 }
