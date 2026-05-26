@@ -28,4 +28,4 @@ jobs:
           npm run lint
 
       - name: Check if the bundled output has changed
-        run: git diff --exit-code dist/index.js
+        run: git diff --exit-code
