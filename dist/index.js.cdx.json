@@ -33,7 +33,7 @@
 			},
 			{
 				"name": "rolldown",
-				"version": "1.0.2",
+				"version": "1.0.3",
 				"externalReferences": [
 					{
 						"url": "git+https://github.com/rolldown/rolldown.git#packages/rolldown",
@@ -140,8 +140,8 @@
 		{
 			"type": "library",
 			"name": "undici",
-			"version": "6.25.0",
-			"bom-ref": "pkg:npm/undici@6.25.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fnodejs%2Fundici.git",
+			"version": "6.26.0",
+			"bom-ref": "pkg:npm/undici@6.26.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fnodejs%2Fundici.git",
 			"description": "An HTTP/1.1 client, written from scratch for Node.js",
 			"licenses": [
 				{
@@ -151,7 +151,7 @@
 					}
 				}
 			],
-			"purl": "pkg:npm/undici@6.25.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fnodejs%2Fundici.git",
+			"purl": "pkg:npm/undici@6.26.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fnodejs%2Fundici.git",
 			"externalReferences": [
 				{
 					"url": "git+https://github.com/nodejs/undici.git",
@@ -327,13 +327,13 @@
 			"ref": "pkg:npm/tunnel@0.0.6?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fkoichik%2Fnode-tunnel.git"
 		},
 		{
-			"ref": "pkg:npm/undici@6.25.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fnodejs%2Fundici.git"
+			"ref": "pkg:npm/undici@6.26.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fnodejs%2Fundici.git"
 		},
 		{
 			"ref": "pkg:npm/%40actions/http-client@4.0.1?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Factions%2Ftoolkit.git%23packages%2Fhttp-client",
 			"dependsOn": [
 				"pkg:npm/tunnel@0.0.6?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fkoichik%2Fnode-tunnel.git",
-				"pkg:npm/undici@6.25.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fnodejs%2Fundici.git"
+				"pkg:npm/undici@6.26.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fnodejs%2Fundici.git"
 			]
 		},
 		{
