@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.4.1
+
+- Updated dependencies
+- Port from ncc to rolldown
+- Include an SBOM file (see dist/index.js.cdx.json)
+
 ## v1.4.0
 
 - Updated dependencies
