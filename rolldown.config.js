@@ -18,6 +18,11 @@ export default defineConfig({
       outDir: "",
       outFilename: "index.js.cdx",
       saveTimestamp: false,
+      afterCollect(bom) {
+        for (const tool of bom.metadata.tools.tools) {
+          tool.version = undefined;
+        }
+      },
     }),
     {
       name: "emit-package-json",
