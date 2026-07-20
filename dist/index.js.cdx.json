@@ -273,8 +273,8 @@
 		{
 			"type": "library",
 			"name": "adm-zip",
-			"version": "0.5.18",
-			"bom-ref": "pkg:npm/adm-zip@0.5.18?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcthackers%2Fadm-zip.git",
+			"version": "0.6.0",
+			"bom-ref": "pkg:npm/adm-zip@0.6.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcthackers%2Fadm-zip.git",
 			"author": "Nasca Iacob",
 			"description": "Javascript implementation of zip for nodejs with support for electron original-fs. Allows user to create or extract zip files both in memory or to/from disk",
 			"licenses": [
@@ -285,7 +285,7 @@
 					}
 				}
 			],
-			"purl": "pkg:npm/adm-zip@0.5.18?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcthackers%2Fadm-zip.git",
+			"purl": "pkg:npm/adm-zip@0.6.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcthackers%2Fadm-zip.git",
 			"externalReferences": [
 				{
 					"url": "git+https://github.com/cthackers/adm-zip.git",
@@ -311,7 +311,7 @@
 			"dependsOn": [
 				"pkg:npm/%40actions/core@3.0.1?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Factions%2Ftoolkit.git%23packages%2Fcore",
 				"pkg:npm/%40actions/io@3.0.2?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Factions%2Ftoolkit.git%23packages%2Fio",
-				"pkg:npm/adm-zip@0.5.18?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcthackers%2Fadm-zip.git"
+				"pkg:npm/adm-zip@0.6.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcthackers%2Fadm-zip.git"
 			]
 		},
 		{
@@ -344,7 +344,7 @@
 			]
 		},
 		{
-			"ref": "pkg:npm/adm-zip@0.5.18?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcthackers%2Fadm-zip.git"
+			"ref": "pkg:npm/adm-zip@0.6.0?vcs_url=git%2Bhttps%3A%2F%2Fgithub.com%2Fcthackers%2Fadm-zip.git"
 		}
 	]
 }
