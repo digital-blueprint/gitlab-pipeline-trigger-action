@@ -10,14 +10,12 @@
     "adm-zip": "^0.6.0"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "eslint": "^10.0.0",
-    "globals": "^17.0.0",
+    "oxlint": "^1.79.0",
     "rolldown": "^1.0.1",
     "rollup-plugin-sbom": "^4.0.0"
   },
   "scripts": {
     "build": "rolldown -c",
-    "lint": "eslint ."
+    "lint": "oxlint ."
   }
 }

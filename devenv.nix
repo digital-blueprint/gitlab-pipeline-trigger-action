@@ -17,7 +17,7 @@
 
   # https://devenv.sh/tasks/
   tasks = {
-    # Install dependencies for eslint before the git hook runs
+    # Install npm dependencies before the git hook runs
     "npm:install" = {
       exec = "npm install";
       before = [ "devenv:git-hooks:run" ];
