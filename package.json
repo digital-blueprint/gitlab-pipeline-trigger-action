@@ -11,11 +11,13 @@
   },
   "devDependencies": {
     "oxlint": "^1.79.0",
+    "prettier": "^3.9.6",
     "rolldown": "^1.0.1",
     "rollup-plugin-sbom": "^4.0.0"
   },
   "scripts": {
     "build": "rolldown -c",
-    "lint": "oxlint ."
+    "lint": "oxlint .",
+    "prettier:fix": "prettier --write ."
   }
 }
