@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "checkJs": true,
+    "maxNodeModuleJsDepth": 0,
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "target": "esnext",
+    "types": ["node"]
+  },
+  "exclude": ["node_modules", "dist"]
+}

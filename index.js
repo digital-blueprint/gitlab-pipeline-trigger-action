@@ -4,18 +4,38 @@ import fs from 'node:fs';
 import path from 'node:path';
 import AdmZip from 'adm-zip';
 
+/**
+ * @typedef {object} Pipeline
+ * @property {number} id
+ * @property {string} status
+ * @property {string} web_url
+ */
+
+/**
+ * @typedef {object} PipelineJob
+ * @property {number} id
+ * @property {string} name
+ * @property {{filename?: string}} [artifacts_file]
+ */
+
 // Helper functions for logging
+/** @param {string} message */
 const verboseLog = (message) => {
     if (core.getInput('verbose') === 'true') {
         console.log(message);
     }
 };
 
+/** @param {string} message */
 const genericLog = (message) => {
     console.log(message);
 };
 
+/** @param {number} ms */
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+/** @param {unknown} error */
+const getErrorMessage = (error) => (error instanceof Error ? error.message : String(error));
 
 /**
  * GitLab pipeline status values (see https://docs.gitlab.com/ee/api/pipelines.html#list-project-pipelines):
@@ -30,6 +50,11 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
  * - canceled: The pipeline has been canceled by a user or system.
  * - skipped: The pipeline was skipped due to a configuration option or a pipeline rule.
  * - manual: The pipeline is waiting for a user to trigger it manually.
+ * @param {string} host
+ * @param {string} projectId
+ * @param {string} token
+ * @param {number} pipelineId
+ * @param {string} webUrl
  */
 const pollPipeline = async (host, projectId, token, pipelineId, webUrl) => {
     genericLog('Polling pipeline status...');
@@ -65,6 +90,7 @@ const pollPipeline = async (host, projectId, token, pipelineId, webUrl) => {
                 break;
             }
 
+            /** @type {Pipeline} */
             const data = await response.json();
 
             status = data.status;
@@ -85,7 +111,7 @@ const pollPipeline = async (host, projectId, token, pipelineId, webUrl) => {
             }
         } catch (error) {
             if (core.getInput('verbose') === 'true') {
-                core.setFailed(error.message);
+                core.setFailed(getErrorMessage(error));
             } else {
                 core.setFailed('Error occurred while polling pipeline');
             }
@@ -101,7 +127,7 @@ const pollPipeline = async (host, projectId, token, pipelineId, webUrl) => {
  * @param {string} host - GitLab host
  * @param {string} projectId - Project ID
  * @param {string} token - Access token
- * @param {string} jobId - Job ID
+ * @param {number} jobId - Job ID
  * @param {string} jobName - Job name
  * @param {string} jobLogsPath - Path to save job logs
  * @returns {Promise<boolean>} - Whether job logs were downloaded successfully
@@ -135,7 +161,7 @@ const downloadJobLogs = async (host, projectId, token, jobId, jobName, jobLogsPa
         return true;
     } catch (error) {
         genericLog('Error downloading job logs');
-        verboseLog(`Job ${jobName} (${jobId}): Error ${error.message}`);
+        verboseLog(`Job ${jobName} (${jobId}): Error ${getErrorMessage(error)}`);
         return false;
     }
 };
@@ -145,9 +171,9 @@ const downloadJobLogs = async (host, projectId, token, jobId, jobName, jobLogsPa
  * @param {string} host - GitLab host
  * @param {string} projectId - Project ID
  * @param {string} token - Access token
- * @param {string} pipelineId - Pipeline ID
+ * @param {number} pipelineId - Pipeline ID
  * @param {string} downloadPath - Path to save job logs
- * @param {Array} jobs - Array of pipeline jobs (pre-fetched)
+ * @param {PipelineJob[]} jobs - Array of pipeline jobs (pre-fetched)
  * @returns {Promise<boolean>} - Whether job logs were downloaded successfully
  */
 const downloadAllJobLogs = async (host, projectId, token, pipelineId, downloadPath, jobs) => {
@@ -184,7 +210,7 @@ const downloadAllJobLogs = async (host, projectId, token, pipelineId, downloadPa
                 }
             } catch (error) {
                 genericLog('Error processing job logs');
-                verboseLog(`Job ${job.name} (${job.id}): Error ${error.message}`);
+                verboseLog(`Job ${job.name} (${job.id}): Error ${getErrorMessage(error)}`);
             }
         }
 
@@ -197,7 +223,7 @@ const downloadAllJobLogs = async (host, projectId, token, pipelineId, downloadPa
         }
     } catch (error) {
         genericLog('Error downloading job logs');
-        verboseLog(`Pipeline ${pipelineId}: Error ${error.message}`);
+        verboseLog(`Pipeline ${pipelineId}: Error ${getErrorMessage(error)}`);
         return false;
     }
 };
@@ -207,10 +233,10 @@ const downloadAllJobLogs = async (host, projectId, token, pipelineId, downloadPa
  * @param {string} host - GitLab host
  * @param {string} projectId - Project ID
  * @param {string} token - Access token
- * @param {string} pipelineId - Pipeline ID
+ * @param {number} pipelineId - Pipeline ID
  * @param {string} downloadPath - Path to save artifacts and logs
  * @param {boolean} downloadJobLogsFlag - Whether to download job logs
- * @param {Array} jobs - Array of pipeline jobs (pre-fetched)
+ * @param {PipelineJob[]} jobs - Array of pipeline jobs (pre-fetched)
  * @returns {Promise<boolean>} - Whether artifacts were downloaded successfully
  */
 const downloadArtifacts = async (
@@ -291,7 +317,7 @@ const downloadArtifacts = async (
                 downloadedCount++;
             } catch (error) {
                 genericLog('Error downloading artifacts for job');
-                verboseLog(`Job ${job.name} (${job.id}): Error ${error.message}`);
+                verboseLog(`Job ${job.name} (${job.id}): Error ${getErrorMessage(error)}`);
             }
         }
 
@@ -323,7 +349,7 @@ const downloadArtifacts = async (
                     }
                 } catch (error) {
                     genericLog('Error processing job logs');
-                    verboseLog(`Job ${job.name} (${job.id}): Error ${error.message}`);
+                    verboseLog(`Job ${job.name} (${job.id}): Error ${getErrorMessage(error)}`);
                 }
             }
         }
@@ -344,7 +370,7 @@ const downloadArtifacts = async (
         }
     } catch (error) {
         genericLog('Error downloading artifacts');
-        verboseLog(`Pipeline ${pipelineId}: Error ${error.message}`);
+        verboseLog(`Pipeline ${pipelineId}: Error ${getErrorMessage(error)}`);
         return false;
     }
 };
@@ -424,6 +450,7 @@ async function run() {
             }
         }
 
+        /** @type {Pipeline} */
         const data = await response.json();
 
         core.setOutput('id', data.id);
@@ -436,6 +463,7 @@ async function run() {
         const finalStatus = await pollPipeline(host, projectId, accessToken, data.id, data.web_url);
 
         // Fetch jobs once if either artifacts or logs need to be downloaded
+        /** @type {PipelineJob[] | null} */
         let jobs = null;
         if (downloadArtifactsFlag || downloadJobLogsFlag) {
             genericLog('Fetching pipeline jobs...');
@@ -453,7 +481,7 @@ async function run() {
                 verboseLog(`Pipeline ${data.id}: Response code ${jobsResponse.status}`);
                 jobs = [];
             } else {
-                jobs = await jobsResponse.json();
+                jobs = /** @type {PipelineJob[]} */ (await jobsResponse.json());
                 genericLog(`Found ${jobs.length} jobs in pipeline`);
             }
         }
@@ -529,11 +557,11 @@ async function run() {
         }
     } catch (error) {
         if (core.getInput('verbose') === 'true') {
-            core.setFailed(error.message);
+            core.setFailed(getErrorMessage(error));
         } else {
             core.setFailed('An error occurred while running the action');
         }
     }
 }
 
-run();
+await run();

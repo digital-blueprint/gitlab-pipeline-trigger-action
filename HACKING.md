@@ -1,5 +1,14 @@
 # Development
 
+## Check
+
+```bash
+npm ci
+npm run check
+```
+
+Checks lint, types, and formatting without modifying files.
+
 ### Build action
 
 You need to run this after you made changes to the action.
