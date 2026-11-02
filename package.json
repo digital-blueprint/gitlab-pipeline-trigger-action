@@ -10,7 +10,7 @@
     "adm-zip": "^0.6.0"
   },
   "devDependencies": {
-    "@types/node": "^24.19.2",
+    "@types/node": "^26.0.0",
     "oxlint": "^1.87.0",
     "oxlint-tsgolint": "^7.0.2003",
     "prettier": "^3.9.6",
