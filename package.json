@@ -15,7 +15,7 @@
     "oxlint-tsgolint": "^7.0.2003",
     "prettier": "^3.9.6",
     "rolldown": "^1.0.1",
-    "rollup-plugin-sbom": "^4.0.0",
+    "rollup-plugin-sbom": "^5.0.0",
     "typescript": "^7.0.2"
   },
   "scripts": {
