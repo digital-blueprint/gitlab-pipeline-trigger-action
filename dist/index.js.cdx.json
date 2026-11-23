@@ -50,7 +50,7 @@
 				{
 					"type": "library",
 					"name": "rollup-plugin-sbom",
-					"version": "5.0.1",
+					"version": "5.0.3",
 					"author": "Jan Biasi",
 					"description": "A rollup, rolldown and vite plugin to generate SBOMs for your application",
 					"licenses": [
